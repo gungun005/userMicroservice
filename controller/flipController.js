@@ -27,21 +27,12 @@ const getFlipUsersDelete=(req,res)=>
   res.send(getFlipUsersDelete);
 };
 
-const postFlipUsersDelete=(req,res)=>
+const updateFlipUsersUpdate=(req,res)=>
 {
-   let postFlipUsersDelete=flipServices.postFlipUsersDelete(req.body);
-   res.send(postFlipUsersDelete);
+   let updateFlipUsersUpdate=flipServices.updateFlipUsersUpdate(req.body);
+   res.send(updateFlipUsersUpdate);
 };
-const getFlipUsersUpdate=(req,res)=>
-{
-   let getFlipUsersUpdate=flipServices.getFlipUsersUpdate(req.body);
-   res.send(getFlipUsersUpdate);
-};
-const postFlipUsersUpdate=(req,res)=>
-{
-  let postFlipUsersUpdate=flipServices.postFlipUsersUpdate(req.body);
-  res.send(postFlipUsersUpdate);
-};
+
 
 
 module.exports={
@@ -50,7 +41,5 @@ postFlipUsers,
 getFlipUsersRegister,
 postFlipUsersRegister,
 getFlipUsersDelete,
-postFlipUsersDelete,
-getFlipUsersUpdate,
-postFlipUsersUpdate
+updateFlipUsersUpdate
 };
