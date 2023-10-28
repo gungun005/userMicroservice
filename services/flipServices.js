@@ -28,21 +28,12 @@ const getFlipUsersDelete=(body)=>
   return(getFlipUsersDelete);
 };
 
-const postFlipUsersDelete=(body)=>
+const updateFlipUsersUpdate=(body)=>
 {
-   let postFlipUsersDelete=flipRepository.postFlipUsersDelete(body);
-   return(postFlipUsersDelete);
+   let updateFlipUsersUpdate=flipRepository.updateFlipUsersUpdate(body);
+   return(updateFlipUsersUpdate);
 };
-const getFlipUsersUpdate=(body)=>
-{
-   let getFlipUsersUpdate=flipRepository.getFlipUsersUpdate(body);
-   return(getFlipUsersUpdate);
-};
-const postFlipUsersUpdate=(body)=>
-{
-  let postFlipUsersUpdate=flipRepositoryS.postFlipUsersUpdate(body);
-  return(postFlipUsersUpdate);
-};
+
 
 
 module.exports={
@@ -51,7 +42,5 @@ postFlipUsers,
 getFlipUsersRegister,
 postFlipUsersRegister,
 getFlipUsersDelete,
-postFlipUsersDelete,
-getFlipUsersUpdate,
-postFlipUsersUpdate
+updateFlipUsersUpdate
 };
