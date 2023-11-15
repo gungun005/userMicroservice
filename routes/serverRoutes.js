@@ -11,12 +11,11 @@ router.route('/user')
 router.route('/user/register')
 .get(flipController.getFlipUsersRegister)
 .post(flipController.postFlipUsersRegister)
+.patch(flipController.updateFlipUsersUpdate)
 
 router.route('/user/delete')
 .delete(flipController.getFlipUsersDelete)
 
-router.route('/user/update')
-.post(flipController.updateFlipUsersUpdate)
 
 
 
