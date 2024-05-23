@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const flipController=require('../controller/flipController');
+const validate = require('../validations/user.validation');
+
 router.route('/')
 .get(flipController.getFlipUsers)
 
@@ -10,7 +12,7 @@ router.route('/user')
 
 router.route('/user/register')
 .get(flipController.getFlipUsersRegister)
-.post(flipController.postFlipUsersRegister)
+.post(validate.userSchemaValidation, flipController.postFlipUsersRegister)
 .patch(flipController.updateFlipUsersUpdate)
 
 router.route('/user/delete')
