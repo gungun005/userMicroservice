@@ -1,45 +1,42 @@
-const flipServices=require('../services/flipServices');
+const flipServices = require("../services/flipServices");
 
-const getFlipUsers = (req, res) => {
-  let getFlipUsers=flipServices.getFlipUsers(req.body);
-  res.send( getFlipUsers);
+const getFlipUsers = async (req, res) => {
+  let getFlipUsers = await flipServices.getFlipUsers(req.body);
+  res.send(getFlipUsers);
 };
-const postFlipUsers = (req, res) => {
-    let postFlipUsers=flipServices.postFlipUsers(req.body);
-    res.send( postFlipUsers);
-  };
-
-const getFlipUsersRegister=(req,res)=>
-{
- let getFlipUsersRegister=flipServices.getFlipUsersRegister(req.body);
- res.send( getFlipUsersRegister);
-};
-const postFlipUsersRegister=(req,res)=>
-{
-    let  postFlipUsersRegister=flipServices.postFlipUsersRegister(req.body);
-    res.send(postFlipUsersRegister);
-
+const postFlipUsers = async (req, res) => {
+  let postFlipUsers = await flipServices.postFlipUsers(req.body);
+  res.send(postFlipUsers);
 };
 
-const getFlipUsersDelete=(req,res)=>
-{
-  let getFlipUsersDelete=flipServices.getFlipUsersDelete(req.body);
+const getFlipUsersRegister = async (req, res) => {
+  let getFlipUsersRegister = await flipServices.getFlipUsersRegister(req.body);
+  res.send(getFlipUsersRegister);
+};
+const postFlipUsersRegister = async (req, res) => {
+  let postFlipUsersRegister = await flipServices.postFlipUsersRegister(
+    req.body
+  );
+  res.send(postFlipUsersRegister);
+};
+
+const getFlipUsersDelete = async (req, res) => {
+  let getFlipUsersDelete = await flipServices.getFlipUsersDelete(req.body);
   res.send(getFlipUsersDelete);
 };
 
-const updateFlipUsersUpdate=(req,res)=>
-{
-   let updateFlipUsersUpdate=flipServices.updateFlipUsersUpdate(req.body);
-   res.send(updateFlipUsersUpdate);
+const updateFlipUsersUpdate = async (req, res) => {
+  let updateFlipUsersUpdate = await flipServices.updateFlipUsersUpdate(
+    req.body
+  );
+  res.send(updateFlipUsersUpdate);
 };
 
-
-
-module.exports={
-getFlipUsers,
-postFlipUsers,
-getFlipUsersRegister,
-postFlipUsersRegister,
-getFlipUsersDelete,
-updateFlipUsersUpdate
+module.exports = {
+  getFlipUsers,
+  postFlipUsers,
+  getFlipUsersRegister,
+  postFlipUsersRegister,
+  getFlipUsersDelete,
+  updateFlipUsersUpdate,
 };

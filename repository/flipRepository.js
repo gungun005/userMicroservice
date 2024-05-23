@@ -34,18 +34,23 @@ const getFlipUsers = async(body) => {
     console.log("in repo");
     console.log(body);
     console.log("you can updates users here");
-    var item = {
-        firstname: body.firstname,
-        lastname: body.lastname,
-    };
+    const checkUserInDB = body.email;
     try{
         await client.connect()
         const db = client.db("userMicro");
         const coll = db.collection("userMicro");
-        const data = await coll.insertOne(item);
-        // const data2 = await coll.find().toArray();
-        console.log(data)
-        return data.acknowledged == true
+        // const data = await coll.insertOne(body);
+        const data2 = await coll.findOne({email:checkUserInDB});
+        // console.log(data)
+        console.log(data2);
+            if(data2){
+                return false;
+        }
+        else{
+            const data = await coll.insertOne(body);
+            return data.acknowledged == true
+        }
+    
     }
     catch(err){
       console.log(err)
@@ -69,6 +74,7 @@ const getFlipUsers = async(body) => {
   }
   catch(err){
       console.log("Error occurred")
+      console.log(err);
       return err;
   }
   finally{
@@ -106,15 +112,13 @@ const getFlipUsers = async(body) => {
     } 
  };
  
+ //if the email of the  user matches then we will de
  const getFlipUsersDelete=async (body)=>{
     console.log("Hi i m the deleted user");
     let searchOptions = {};
-    if(body.firstname!= null && body.firstname !== ""){
-        searchOptions.firstname = body.firstname;
-    }
-//     if(body.mobileno!= null && body.mobileno !== ""){
-//       searchOptions.mobileno = body.mobileno;
-//   }
+    if(body.email!= null && body.email !== ""){
+      searchOptions.email = body.email;
+  }
     try{
         await client.connect()
         const db = client.db("userMicro");
@@ -133,12 +137,18 @@ const getFlipUsers = async(body) => {
 
     
  };
+ //update kaam krha hae! 
+ //in this we have the criteria to match =>is email
+ //we are updating mobile no here!
  const updateFlipUsersUpdate=async(body)=>{
     console.log("hi if any updates i m their to tackle!");
     let searchOptions = {};
-    if(body.mobileno != null && body.mobileno !== ""){
-        searchOptions.mobileno= body.mobileno;
+    if(body.email != null && body.email !== ""){
+        searchOptions.email= body.email;
     }
+    // if(body.mobileno != null && body.mobileno !== ""){
+    //     searchOptions.mobileno= body.mobileno;
+    // }
     console.log("hi i have updated mobileno");
     try{
         await client.connect()
