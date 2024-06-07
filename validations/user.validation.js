@@ -1,11 +1,14 @@
 const { check, validationResult } = require('express-validator');
 
 exports.userSchemaValidation = [
-    check('firstname').isString(),
-    check('lastname').isString(),
+    check('name').isString(),
     check('email').isEmail(),
     check('mob').isMobilePhone(),
-    check('password').isAlphanumeric().isLength(8),
+    check('dob').isString(),
+    check('city').isString(),
+    check('states').isString(),
+    check('address').isString(),
+    check('pincode').isNumeric(),
 
     (req, res, next) => {
         const errors = validationResult(req);

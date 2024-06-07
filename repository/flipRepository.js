@@ -11,12 +11,14 @@ const client = new MongoClient(process.env.DATABASE_URL, {
    useNewUrlParser: true, useUnifiedTopology: true 
 });
 const getFlipUsers = async(body) => {
-   console.log("flip users")
+   console.log("flip users");
+   console.log(body);
+
    try{
       await client.connect()
       const db = client.db("userMicro");
       const coll = db.collection("userMicro");
-      const data = await coll.find().toArray()
+      const data = await coll.findOne(body);
       console.log(data)
       return data
   }
@@ -31,23 +33,23 @@ const getFlipUsers = async(body) => {
  
  const postFlipUsers = async(body) => {
     console.log("hey i m there working!");
-    console.log("in repo");
     console.log(body);
-    console.log("you can updates users here");
     const checkUserInDB = body.email;
     try{
         await client.connect()
         const db = client.db("userMicro");
         const coll = db.collection("userMicro");
-        // const data = await coll.insertOne(body);
+        //checked in DB if that the email exist already
         const data2 = await coll.findOne({email:checkUserInDB});
-        // console.log(data)
         console.log(data2);
-            if(data2){
-                return false;
+        //if user with email exist then return false
+        if(data2){
+            return data2.acknowledged == false;
         }
+        //if user doesn't exist then create user
         else{
             const data = await coll.insertOne(body);
+            console.log(data);
             return data.acknowledged == true
         }
     

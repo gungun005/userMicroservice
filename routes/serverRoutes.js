@@ -8,7 +8,7 @@ router.route('/')
 
 router.route('/user')
 .get(flipController.getFlipUsers)
-.post(flipController.postFlipUsers)
+.post(validate.userSchemaValidation,flipController.postFlipUsers)
 
 router.route('/user/register')
 .get(flipController.getFlipUsersRegister)
